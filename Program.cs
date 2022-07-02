@@ -2,7 +2,7 @@
 var masterConnection = Regex.Replace(connection, @"database=.*", "");
 foreach (var queryFile in args)
 {
-    Logger.LogInfo(queryFile);
+    Logger.LogInfo($"Running {queryFile} ...");
     Database.Open(masterConnection).Run(File.ReadAllText(queryFile));
-    Logger.LogSuccess(queryFile);
+    Logger.LogSuccess($"Ran {queryFile}");
 }
