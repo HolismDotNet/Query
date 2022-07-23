@@ -12,6 +12,16 @@ if (args.Length == 1 && args[0] == "DeleteData")
     }
     Logger.LogInfo($"Deleted all the data");
 }
+if (args.Length == 1 && args[0] == "DropDatabases")
+{
+    Logger.LogInfo("Dropping all databases ...");
+    for (var i = 0; i < 3; i++)
+    {
+        DatabaseDropper.MasterConnection = masterConnection;
+        new DatabaseDropper().DropDatabases();
+    }
+    Logger.LogSuccess("Dropped all databases");
+}
 else 
 {
     for (var i = 0; i < 3; i++)
